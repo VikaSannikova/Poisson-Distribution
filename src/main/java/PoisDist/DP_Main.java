@@ -60,20 +60,32 @@ public class DP_Main {
     public static void main(String[] args) {
 
         RandomEngine engine = new DRand();
-        Poisson poisson = new Poisson(100.0, engine);
-        ArrayList<Integer> arr = new ArrayList<Integer>();
+        Poisson poisson = new Poisson(1.3, engine);
+        ArrayList<Double> arr = new ArrayList<Double>();
         for(int i=0;i<100;++i) {
-            int poissonObs = poisson.nextInt();
+            double poissonObs = poisson.nextInt();
             arr.add(poissonObs);
             //System.out.print(poissonObs+" ");
         }
+
+
         //System.out.println();
 
-        System.out.println("DefPois: " + arr.toString());
+        System.out.println("DefPois 1.3: " + arr.toString());
+
+        RandomEngine engine2 = new DRand();
+        Poisson poisson2 = new Poisson(1.5, engine2);
+        ArrayList<Double> arr2 = new ArrayList<Double>();
+        for(int i=0;i<100;++i) {
+            double poissonObs = poisson2.nextInt();
+            arr2.add(poissonObs);
+            //System.out.print(poissonObs+" ");
+        }
+        System.out.println("DefPois 1.7: " + arr.toString());
 
         ArrayList<Integer> arr1 = new ArrayList<Integer>();
         for(int i=0;i<100;++i) {
-            int res = poisson(1.0);
+            int res = poisson(1.3);
             arr1.add(res);
             //System.out.print(res+" ");
 
