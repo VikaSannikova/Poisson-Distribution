@@ -30,4 +30,13 @@ public class Range {
         this.right = right;
     }
 
+    public void setRange(Range range){
+        this.left = range.getLeft();
+        this.right = range.getRight();
+    }
+
+    @Override
+    public String toString() {
+        return "[" + left +"," + right + "] ";
+    }
 }
