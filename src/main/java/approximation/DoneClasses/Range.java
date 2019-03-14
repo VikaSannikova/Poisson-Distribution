@@ -1,4 +1,4 @@
-package approximation.general;
+package approximation.DoneClasses;
 
 public class Range {
     double left;
@@ -33,6 +33,10 @@ public class Range {
     public void setRange(Range range){
         this.left = range.getLeft();
         this.right = range.getRight();
+    }
+
+    public double getLength(){
+        return this.right-this.left;
     }
 
     @Override

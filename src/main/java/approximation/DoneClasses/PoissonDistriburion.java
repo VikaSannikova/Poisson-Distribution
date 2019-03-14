@@ -1,7 +1,6 @@
-package approximation.general;
+package approximation.DoneClasses;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import static java.lang.Math.pow;
 
@@ -13,9 +12,13 @@ public class PoissonDistriburion {
     double t;
     double lambda;
 
-    public PoissonDistriburion() {
+    public PoissonDistriburion( double lambda, double t) {
         setU();
         setA();
+        setT(t);
+        setLambda(lambda);
+        setP();
+        setIntervals();
     }
 
     public ArrayList<Integer> getA() {
@@ -95,11 +98,7 @@ public class PoissonDistriburion {
 
     public static void main(String[] args) {
 
-        PoissonDistriburion pd = new PoissonDistriburion();
-        pd.setT(1);
-        pd.setLambda(1.0);
-        pd.setP();
-        pd.setIntervals();
+        PoissonDistriburion pd = new PoissonDistriburion(1,1);
 
         System.out.println("Сгенерированное число из [0,1]: " + pd.getU());
         System.out.println("Лямбда: "+pd.getLambda());
