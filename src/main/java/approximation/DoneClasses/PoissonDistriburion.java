@@ -19,6 +19,15 @@ public class PoissonDistriburion {
         setLambda(lambda);
         setP();
         setIntervals();
+
+//        System.out.println("Сгенерированное число из [0,1]: " + getU());
+//        System.out.println("Лямбда: "+getLambda());
+//        System.out.println("Временной промежуток: " +getT());
+//        System.out.println("А: " + getA());
+//        System.out.println("P: " + getP());
+//        System.out.println("Интервалы: " + getIntervals());
+//
+//        System.out.println("Число заявок: " + returnNum(u, intervals));
     }
 
     public ArrayList<Integer> getA() {
@@ -98,7 +107,7 @@ public class PoissonDistriburion {
 
     public static void main(String[] args) {
 
-        PoissonDistriburion pd = new PoissonDistriburion(1,1);
+        PoissonDistriburion pd = new PoissonDistriburion(1,10);
 
         System.out.println("Сгенерированное число из [0,1]: " + pd.getU());
         System.out.println("Лямбда: "+pd.getLambda());
