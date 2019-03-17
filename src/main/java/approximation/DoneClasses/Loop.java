@@ -39,7 +39,7 @@ public class Loop {
     }
 
     public Loop(int numOfThreads) {
-        this.yellowTime = 3.0;
+        this.yellowTime = 10.0;
         Integer queue[] = {1,2,3};
         this.setQueues(new ArrayList<Integer>(Arrays.asList(queue)));
         Double times[] = {10.0,10.0,10.0};
@@ -63,6 +63,7 @@ public class Loop {
 
         System.out.println("Queues: "+threads.get(0).getQueue() +" " + threads.get(1).getQueue() +" "+threads.get(2).getQueue());
 
+        System.out.println("_______________________________");
         //работа за 1 КС
         threads.get(0).setT(redTimes.get(0));
         threads.get(0).createQueueWithoutService();
@@ -71,7 +72,7 @@ public class Loop {
         threads.get(2).setT(redTimes.get(0));
         threads.get(2).createQueueWithoutService();
         System.out.println("Queues: "+threads.get(0).getQueue() +" " + threads.get(1).getQueue() +" "+threads.get(2).getQueue());
-
+        System.out.println("_______________________________");
         //работа за 2 ЗС
         System.out.println("Queues after 2GL");
         threads.get(0).setT(greenTimes.get(1));
@@ -82,7 +83,7 @@ public class Loop {
         threads.get(2).setT(greenTimes.get(1));
         threads.get(2).createQueueWithoutService();
         System.out.println("Queues: "+threads.get(0).getQueue() +" " + threads.get(1).getQueue() +" "+threads.get(2).getQueue());
-
+        System.out.println("_______________________________");
         //работа за 2 КС
         threads.get(0).setT(redTimes.get(1));
         threads.get(0).createQueueWithoutService();
@@ -90,21 +91,41 @@ public class Loop {
         threads.get(1).createQueueWithoutService();
         threads.get(2).setT(redTimes.get(1));
         threads.get(2).createQueueWithoutService();
-        System.out.println("Queues: "+threads.get(0).getQueue() +" " + threads.get(1).getQueue() +" "+threads.get(2).getQueue());
-
-        threads.get(0).setT(redTimes.get(1));
+        System.out.println("Queues after 2 RL: "+threads.get(0).getQueue() +" " + threads.get(1).getQueue() +" "+threads.get(2).getQueue());
+        System.out.println("_______________________________");
+        //работа за 3 ЗС
+        threads.get(0).setT(greenTimes.get(2));
         threads.get(0).createQueueWithoutService();
-        threads.get(1).setT(redTimes.get(1));
+        threads.get(1).setT(greenTimes.get(2));
         threads.get(1).createQueueWithoutService();
-
         threads.get(2).setT(greenTimes.get(2));
         threads.get(2).createQueue();
-
-        //нужен цикл while пока нет заявок по 1 потоку нужно
-        if(threads.get(0).getQueue()==0){
+        System.out.println("Queues after 3 GL: "+threads.get(0).getQueue() +" " + threads.get(1).getQueue() +" "+threads.get(2).getQueue());
+        System.out.println("_______________________________");
+        //петля
+        int i = 0;
+        while(threads.get(0).getQueue()==0){
+            threads.get(0).setT(yellowTime);
+            threads.get(0).createQueueWithoutService();
+            threads.get(1).setT(yellowTime);
+            threads.get(1).createQueueWithoutService();
             threads.get(2).setT(yellowTime);
-            //переходим к работе 1 потока
+            threads.get(2).createQueue();
+            System.out.println("Queues after "+ i +" YL: "+threads.get(0).getQueue() +" " + threads.get(1).getQueue() +" "+threads.get(2).getQueue());
+            i++;
         }
+        System.out.println("Queues after YLs: "+threads.get(0).getQueue() +" " + threads.get(1).getQueue() +" "+threads.get(2).getQueue());
+        System.out.println("_______________________________");
+        //переналадка на обслуживание 1
+        threads.get(0).setT(redTimes.get(2));
+        threads.get(0).createQueueWithoutService();
+        threads.get(1).setT(redTimes.get(2));
+        threads.get(1).createQueueWithoutService();
+        threads.get(2).setT(redTimes.get(2));
+        threads.get(2).createQueueWithoutService();
+        System.out.println("Queues after 3 RL: "+threads.get(0).getQueue() +" " + threads.get(1).getQueue() +" "+threads.get(2).getQueue());
+
+
 
 
 
