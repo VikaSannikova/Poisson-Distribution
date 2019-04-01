@@ -13,6 +13,7 @@ public class Thread {
     Formula formula;
     //Expression expression;
     int numOfPoints;
+    double avgIntens;
 
     public Thread(int queue, double t, double lambda, Formula formula, int numOfPoints) {
         this.queue = queue;
@@ -63,12 +64,21 @@ public class Thread {
         return numOfPoints;
     }
 
+    public double getAvgIntens() {
+        return avgIntens;
+    }
+
+    public void setAvgIntens(double avgIntens) {
+        this.avgIntens = avgIntens;
+    }
+
     public void createQueue(){
         Intensity intensity = new Intensity(getNumOfPoints(), getT(), getFormula());
+        avgIntens = intensity.getAverage();
         ArrayList<Integer> queues = new ArrayList<>();
         queues.add(getQueue());
         System.out.println( queues.get(0));
-        for(int i = 1; i < intensity.getIntervals().size(); i++){ //здесь можно выводить 1 число а не массив очередей
+        for(int i = 1; i < intensity.getIntervals().size()+1; i++){ //здесь можно выводить 1 число а не массив очередей
             PoissonDistriburion pd = new PoissonDistriburion(getLambda(),intensity.getIntervals().get(i-1).getLength());
             queues.add(Math.max(0,queues.get(i-1)+ pd.returnNum(pd.u, pd.intervals) - (int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1))));
             System.out.println(queues.get(i-1)+"+"+ pd.returnNum(pd.u, pd.intervals) +"-"+ (int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1)));
@@ -99,7 +109,7 @@ public class Thread {
         thread.createQueue();
         //System.out.println("QUEUES: " + thread.getQueues());
         System.out.println("FINAL: "+ thread.queue);
-
+        System.out.println("AVG INTENSITY: "+ thread.avgIntens);
 
     }
 

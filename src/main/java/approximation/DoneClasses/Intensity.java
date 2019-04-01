@@ -89,7 +89,7 @@ public class Intensity {
     public void setAverage(double average) { this.average = average; }
 
     public static void main(String[] args) { //тестовые данные
-        Intensity intensity = new Intensity(9,8, new Formula("x^3"));
+        Intensity intensity = new Intensity(9,10, new Formula("x^2"));
         System.out.println("TIMES: "+intensity.getDeltatimes());
         System.out.println("INTERVALS: "+intensity.getIntervals());
         System.out.println("INTENSITIES: "+intensity.getIntensities());
