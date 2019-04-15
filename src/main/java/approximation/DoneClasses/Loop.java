@@ -1,8 +1,12 @@
 package approximation.DoneClasses;
 
+
+import java.awt.geom.Line2D;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 public class Loop {
     int numOfThreads;
@@ -13,6 +17,7 @@ public class Loop {
     ArrayList<Double> redTimes = new ArrayList<>();
     double yellowTime;
     ArrayList<Thread> threads = new ArrayList<>();
+    Double param;
 
     public void setNumOfThreads(int numOfThreads) {
         this.numOfThreads = numOfThreads;
@@ -38,11 +43,19 @@ public class Loop {
         this.redTimes = redTimes;
     }
 
-    public Loop(int numOfThreads) {
+    public Double getParam() {
+        return param;
+    }
+
+    public void setParam(Double param) {
+        this.param = param;
+    }
+
+    public Loop(int numOfThreads, ArrayList<Integer> queue) {
         setNumOfThreads(numOfThreads);
         this.yellowTime = 10.0;
-        Integer queue[] = {1,2,3,4,5};
-        this.setQueues(new ArrayList<Integer>(Arrays.asList(queue)));
+        //Integer queue[] = {1,2,3,4,5};
+        this.setQueues(queue);
         Double times[] = {10.0,10.0,10.0,10.0,10.0};
         this.setGreenTimes(new ArrayList<Double>(Arrays.asList(times)));
         Double lambdas[] = {0.01,1.0,1.0,1.0,10.0}; //интенсивность для 1 потока очень мала
@@ -55,10 +68,12 @@ public class Loop {
         for(int i = 0; i<numOfThreads; i++){
             this.threads.add(new Thread(this.queues.get(i), greenTimes.get(0), this.lambdas.get(i), new Formula(formulas.get(i)), 9));
         }
+        this.param = 0.0;
     }
 
     public void start( int numOfIterations){
-        Integer arr[] = {1,2,3,4,5};
+        Integer arr[] = new Integer[queues.size()];
+        arr = queues.toArray(arr);
         for(int p = 0; p < numOfIterations; p++) {
             int k = 0;
             //работа до последнего зеленого света
@@ -142,7 +157,12 @@ public class Loop {
             System.out.println("ДЛЯ СРЕДНЕЙ ОЧЕРЕДИ:" + arr[i]);
             System.out.println("СРЕДНЯЯ ОЧЕРЕДЬ ЗА "+ numOfIterations + " ИТЕРИЦИЙ: " + ((double)arr[i]/numOfIterations));
         }
-
+        double sumLambda = 0.0;
+        for(int i = 0; i< numOfThreads; i++){
+            param+=threads.get(i).getLambda()*arr[i]/numOfIterations;
+            sumLambda+=threads.get(i).getLambda();
+        }
+        param/=sumLambda;
     }
 
     public void check(){ //спросить на счет проверки, не меняются ли условия
@@ -163,10 +183,27 @@ public class Loop {
     }
 
     public static void main(String[] args) {
-        Loop loop = new Loop(3);
-        loop.start(2);
-        System.out.println();
+        ArrayList<Integer> zeroQueue = new ArrayList<Integer>();
+        zeroQueue.add(0);
+        zeroQueue.add(0);
+        zeroQueue.add(0);
+        ArrayList<Integer> infQueue = new ArrayList<Integer>();
+        infQueue.add(1);
+        infQueue.add(75);
+        infQueue.add(75);
+        Loop loop = new Loop(3, zeroQueue);
+        loop.start(1000);
         loop.check();
+        System.out.println();
+        System.out.println("НОВЫЙ ЦИКЛ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
+        Loop loop1 = new Loop(3, infQueue);
+        loop1.start(1000);
+        loop1.check();
+        System.out.println();
+
+        Double delta = 0.05;
+        System.out.println("Левая часть: " + Math.abs(loop.getParam()-loop1.getParam()));
+        System.out.println("Правая часть: " + loop1.getParam()*delta);
     }
 }

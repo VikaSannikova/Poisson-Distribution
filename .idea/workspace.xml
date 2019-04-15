@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5993164-9faa-42e8-b4c1-5edb08c2f421" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/approximation/DoneClasses/Loop.class" afterPath="$PROJECT_DIR$/target/classes/approximation/DoneClasses/Loop.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/approximation/gui/Queue.class" afterPath="$PROJECT_DIR$/target/classes/approximation/gui/Queue.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/approximation/DoneClasses/Loop.java" afterPath="$PROJECT_DIR$/src/main/java/approximation/DoneClasses/Loop.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/approximation/gui/Queue.java" afterPath="$PROJECT_DIR$/src/main/java/approximation/gui/Queue.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,35 +27,12 @@
       <file leaf-file-name="Loop.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/approximation/DoneClasses/Loop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="151" column="26" lean-forward="true" selection-start-line="151" selection-start-column="26" selection-end-line="151" selection-end-column="26" />
+            <state relative-caret-position="529">
+              <caret line="204" column="27" lean-forward="false" selection-start-line="204" selection-start-column="27" selection-end-line="204" selection-end-column="27" />
               <folding>
-                <element signature="method#Loop#0;class#Loop#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Intensity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/approximation/DoneClasses/Intensity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1750">
-              <caret line="91" column="66" lean-forward="false" selection-start-line="91" selection-start-column="66" selection-end-line="91" selection-end-column="66" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Thread.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/approximation/DoneClasses/Thread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="88" column="16" lean-forward="false" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1397#1398#0" expanded="true" />
-                <element signature="e#1429#1430#0" expanded="true" />
-                <element signature="e#2992#3099#0" expanded="false" />
+                <element signature="method#check#0;class#Loop#0" expanded="false" />
+                <element signature="e#8185#8194#0" expanded="true" />
+                <element signature="e#8327#8336#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,6 +61,8 @@
       <find>sys</find>
       <find>света4</find>
       <find>av</find>
+      <find>setT</find>
+      <find>arr</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -116,7 +99,6 @@
         <option value="$PROJECT_DIR$/src/main/java/approximation/general/PoissonDistriburion.java" />
         <option value="$PROJECT_DIR$/src/main/java/approximation/gui/Input.java" />
         <option value="$PROJECT_DIR$/src/main/java/approximation/gui/Test.java" />
-        <option value="$PROJECT_DIR$/src/main/java/approximation/gui/Queue.java" />
         <option value="$PROJECT_DIR$/src/main/java/approximation/general/Intensity.java" />
         <option value="$PROJECT_DIR$/src/main/java/approximation/gui/GUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/Formula.java" />
@@ -128,6 +110,7 @@
         <option value="$PROJECT_DIR$/src/main/java/approximation/DoneClasses/Intensity.java" />
         <option value="$PROJECT_DIR$/src/main/java/approximation/DoneClasses/Thread.java" />
         <option value="$PROJECT_DIR$/src/main/java/approximation/DoneClasses/GUI.java" />
+        <option value="$PROJECT_DIR$/src/main/java/approximation/gui/Queue.java" />
         <option value="$PROJECT_DIR$/src/main/java/approximation/DoneClasses/Loop.java" />
       </list>
     </option>
@@ -146,10 +129,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-135" />
-    <option name="y" value="79" />
-    <option name="width" value="1936" />
-    <option name="height" value="763" />
+    <option name="x" value="260" />
+    <option name="width" value="1524" />
+    <option name="height" value="1030" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -166,8 +148,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -268,8 +252,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -353,14 +335,14 @@
       <module name="PoissonDistribution" />
       <envs />
     </configuration>
-    <configuration name="PoissonDistriburion" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Queue" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="approximation.DoneClasses.*" />
+          <option name="PATTERN" value="approximation.gui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="approximation.DoneClasses.PoissonDistriburion" />
+      <option name="MAIN_CLASS_NAME" value="approximation.gui.Queue" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -503,19 +485,19 @@
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Application.pois" />
       <item index="1" class="java.lang.String" itemvalue="Application.gui" />
-      <item index="2" class="java.lang.String" itemvalue="Application.PoissonDistriburion" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Intensity" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Thread" />
-      <item index="5" class="java.lang.String" itemvalue="Application.Loop" />
-      <item index="6" class="java.lang.String" itemvalue="Application.GUI" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Intensity" />
+      <item index="3" class="java.lang.String" itemvalue="Application.Thread" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Loop" />
+      <item index="5" class="java.lang.String" itemvalue="Application.GUI" />
+      <item index="6" class="java.lang.String" itemvalue="Application.Queue" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.Loop" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Intensity" />
-        <item index="2" class="java.lang.String" itemvalue="Application.GUI" />
-        <item index="3" class="java.lang.String" itemvalue="Application.Thread" />
-        <item index="4" class="java.lang.String" itemvalue="Application.PoissonDistriburion" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Queue" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Intensity" />
+        <item index="3" class="java.lang.String" itemvalue="Application.GUI" />
+        <item index="4" class="java.lang.String" itemvalue="Application.Thread" />
       </list>
     </recent_temporary>
   </component>
@@ -550,7 +532,8 @@
       <workItem from="1552839920106" duration="7621000" />
       <workItem from="1552902923057" duration="3432000" />
       <workItem from="1553505348991" duration="12795000" />
-      <workItem from="1554111698497" duration="8686000" />
+      <workItem from="1554111698497" duration="14858000" />
+      <workItem from="1555348398977" duration="5049000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;create approx&quot;">
       <created>1542827563109</created>
@@ -584,7 +567,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157566000" />
+    <option name="totallyTimeSpent" value="168787000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
@@ -598,19 +581,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47086802" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936978" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2568371" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22810811" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23189189" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16171224" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -670,12 +653,44 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/approximation/gui/Queue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="35" column="27" lean-forward="false" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+          <folding>
+            <element signature="e#1025#1026#0" expanded="false" />
+            <element signature="e#1068#1069#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/approximation/DoneClasses/Intensity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1775">
+          <caret line="91" column="66" lean-forward="false" selection-start-line="91" selection-start-column="66" selection-end-line="91" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/approximation/DoneClasses/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1525">
+          <caret line="88" column="16" lean-forward="false" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2992#3099#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/approximation/DoneClasses/Loop.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="method#Loop#0;class#Loop#0" expanded="false" />
+            <element signature="method#check#0;class#Loop#0" expanded="false" />
+            <element signature="e#8185#8194#0" expanded="true" />
+            <element signature="e#8327#8336#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -686,8 +701,6 @@
           <caret line="66" column="34" lean-forward="false" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1397#1398#0" expanded="true" />
-            <element signature="e#1429#1430#0" expanded="true" />
             <element signature="e#2992#3099#0" expanded="false" />
           </folding>
         </state>
@@ -705,10 +718,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="2" selection-end-line="29" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#sum#0;class#PoissonDistriburion#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -718,8 +727,6 @@
           <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1397#1398#0" expanded="true" />
-            <element signature="e#1429#1430#0" expanded="true" />
             <element signature="e#2992#3099#0" expanded="false" />
           </folding>
         </state>
@@ -729,10 +736,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="725">
           <caret line="38" column="36" lean-forward="false" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
-          <folding>
-            <element signature="e#731#732#0" expanded="false" />
-            <element signature="e#774#775#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -741,7 +744,9 @@
         <state relative-caret-position="2575">
           <caret line="115" column="32" lean-forward="false" selection-start-line="115" selection-start-column="32" selection-end-line="115" selection-end-column="32" />
           <folding>
-            <element signature="method#Loop#0;class#Loop#0" expanded="false" />
+            <element signature="method#check#0;class#Loop#0" expanded="false" />
+            <element signature="e#8185#8194#0" expanded="true" />
+            <element signature="e#8327#8336#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -758,10 +763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="2" selection-end-line="29" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#sum#0;class#PoissonDistriburion#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -771,8 +772,6 @@
           <caret line="81" column="16" lean-forward="false" selection-start-line="81" selection-start-column="8" selection-end-line="81" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1397#1398#0" expanded="true" />
-            <element signature="e#1429#1430#0" expanded="true" />
             <element signature="e#2992#3099#0" expanded="false" />
           </folding>
         </state>
@@ -782,10 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="950">
           <caret line="38" column="36" lean-forward="false" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
-          <folding>
-            <element signature="e#731#732#0" expanded="false" />
-            <element signature="e#774#775#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -794,7 +789,9 @@
         <state relative-caret-position="3425">
           <caret line="137" column="42" lean-forward="true" selection-start-line="137" selection-start-column="42" selection-end-line="137" selection-end-column="42" />
           <folding>
-            <element signature="method#Loop#0;class#Loop#0" expanded="false" />
+            <element signature="method#check#0;class#Loop#0" expanded="false" />
+            <element signature="e#8185#8194#0" expanded="true" />
+            <element signature="e#8327#8336#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -811,10 +808,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="2" selection-end-line="29" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#sum#0;class#PoissonDistriburion#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -824,8 +817,6 @@
           <caret line="81" column="16" lean-forward="false" selection-start-line="81" selection-start-column="8" selection-end-line="81" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1397#1398#0" expanded="true" />
-            <element signature="e#1429#1430#0" expanded="true" />
             <element signature="e#2992#3099#0" expanded="false" />
           </folding>
         </state>
@@ -835,10 +826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="725">
           <caret line="38" column="36" lean-forward="false" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
-          <folding>
-            <element signature="e#731#732#0" expanded="false" />
-            <element signature="e#774#775#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -847,7 +834,9 @@
         <state relative-caret-position="2600">
           <caret line="104" column="42" lean-forward="false" selection-start-line="104" selection-start-column="42" selection-end-line="104" selection-end-column="42" />
           <folding>
-            <element signature="method#Loop#0;class#Loop#0" expanded="false" />
+            <element signature="method#check#0;class#Loop#0" expanded="false" />
+            <element signature="e#8185#8194#0" expanded="true" />
+            <element signature="e#8327#8336#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -864,10 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1800">
           <caret line="100" column="62" lean-forward="false" selection-start-line="100" selection-start-column="62" selection-end-line="100" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#sum#0;class#PoissonDistriburion#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -875,10 +860,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="725">
           <caret line="38" column="36" lean-forward="false" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
-          <folding>
-            <element signature="e#731#732#0" expanded="false" />
-            <element signature="e#774#775#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -888,8 +869,6 @@
           <caret line="65" column="37" lean-forward="false" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1397#1398#0" expanded="true" />
-            <element signature="e#1429#1430#0" expanded="true" />
             <element signature="e#2992#3099#0" expanded="false" />
           </folding>
         </state>
@@ -928,10 +907,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
           <caret line="30" column="5" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="30" selection-end-column="5" />
-          <folding>
-            <element signature="e#731#732#0" expanded="false" />
-            <element signature="e#774#775#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1012,10 +987,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="537">
           <caret line="38" column="36" lean-forward="false" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="36" />
-          <folding>
-            <element signature="e#731#732#0" expanded="false" />
-            <element signature="e#774#775#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1023,18 +994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="2" selection-end-line="29" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#sum#0;class#PoissonDistriburion#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/approximation/gui/Queue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1622">
-          <caret line="70" column="35" lean-forward="true" selection-start-line="70" selection-start-column="35" selection-end-line="70" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1050,9 +1009,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="965">
           <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="44" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1068,12 +1024,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/approximation/DoneClasses/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
+        <state relative-caret-position="207">
           <caret line="88" column="16" lean-forward="false" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1397#1398#0" expanded="true" />
-            <element signature="e#1429#1430#0" expanded="true" />
             <element signature="e#2992#3099#0" expanded="false" />
           </folding>
         </state>
@@ -1081,18 +1035,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/approximation/DoneClasses/Intensity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1750">
+        <state relative-caret-position="1443">
           <caret line="91" column="66" lean-forward="false" selection-start-line="91" selection-start-column="66" selection-end-line="91" selection-end-column="66" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/approximation/gui/Queue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="35" column="27" lean-forward="false" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+          <folding>
+            <element signature="e#1025#1026#0" expanded="false" />
+            <element signature="e#1068#1069#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/approximation/DoneClasses/Loop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="151" column="26" lean-forward="true" selection-start-line="151" selection-start-column="26" selection-end-line="151" selection-end-column="26" />
+        <state relative-caret-position="529">
+          <caret line="204" column="27" lean-forward="false" selection-start-line="204" selection-start-column="27" selection-end-line="204" selection-end-column="27" />
           <folding>
-            <element signature="method#Loop#0;class#Loop#0" expanded="false" />
+            <element signature="method#check#0;class#Loop#0" expanded="false" />
+            <element signature="e#8185#8194#0" expanded="true" />
+            <element signature="e#8327#8336#0" expanded="true" />
           </folding>
         </state>
       </provider>
