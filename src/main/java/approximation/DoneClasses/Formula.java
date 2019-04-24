@@ -2,10 +2,12 @@ package approximation.DoneClasses;
 import javax.script.*;
 import net.objecthunter.exp4j.*;
 public class Formula {
+        String str;
         Expression expression;
 
         public Formula(String string) {
-               expression = new ExpressionBuilder(string).variables("x").build();
+                str = string;
+                expression = new ExpressionBuilder(string).variables("x").build();
         }
 
         public  double f(double x) {
@@ -26,6 +28,8 @@ public class Formula {
                 System.out.println("f(x)="+formula.f(x));
         }
 
-
-
+        @Override
+        public String toString() {
+                return str;
+        }
 }

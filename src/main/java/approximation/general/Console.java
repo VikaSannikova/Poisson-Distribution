@@ -17,11 +17,11 @@
 //        this.numOfPoints = numOfPoints;
 //    }
 //
-//    public double getT() {
+//    public double getGreenTime() {
 //        return T;
 //    }
 //
-//    public void setT(double t) {
+//    public void setGreenTime(double t) {
 //        T = t;
 //    }
 //

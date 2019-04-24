@@ -22,7 +22,7 @@ public class PoissonDistriburion {
 
 //        System.out.println("Сгенерированное число из [0,1]: " + getU());
 //        System.out.println("Лямбда: "+getLambda());
-//        System.out.println("Временной промежуток: " +getT());
+//        System.out.println("Временной промежуток: " +getGreenTime());
 //        System.out.println("А: " + getA());
 //        System.out.println("P: " + getP());
 //        System.out.println("Интервалы: " + getIntervals());
