@@ -14,6 +14,8 @@ public class Thread {
     //Expression expression;
     int numOfPoints;
     double avgIntens;
+    int realDoneApps;
+    int maxDoneApps;
 
     public Thread(int id, int queue, double lambda, double greenTime, Formula formula, double yellowTime, int numOfPoints) {
         this.id = id;
@@ -89,18 +91,54 @@ public class Thread {
         this.avgIntens = avgIntens;
     }
 
+    public int getRealDoneApps() {
+        return realDoneApps;
+    }
+
+    public void setRealDoneApps(int realDoneApps) {
+        this.realDoneApps = realDoneApps;
+    }
+
+    public Integer getMaxDoneApps(){
+        ArrayList<Integer> maxDoneApps = new ArrayList<>(); //ха каждый дальта t хранит максимально вохможное число обслуженных заявок
+        Intensity intensity = new Intensity(getNumOfPoints(), getGreenTime(), getFormula());
+        for(int i = 1; i < intensity.getIntervals().size()+1; i++){
+            maxDoneApps.add((int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1)));
+        }
+        this.maxDoneApps = 0;
+        for(int elem : maxDoneApps){
+            this.maxDoneApps+=elem;
+        }
+        //System.out.println("Могло быть обслужено " + this.maxDoneApps +" заявок");
+        return this.maxDoneApps;
+    }
+
     public void createQueue(){
         Intensity intensity = new Intensity(getNumOfPoints(), getGreenTime(), getFormula());
         avgIntens = intensity.getAverage();
         ArrayList<Integer> queues = new ArrayList<>();
+        ArrayList<Integer> realDoneApps = new ArrayList<>(); //будет хранить за каждый дельта t реально обслуженные заявки
+        ArrayList<Integer> maxDoneApps = new ArrayList<>(); //ха каждый дальта t хранит максимально вохможное число обслуженных заявок
         queues.add(getQueue());
         System.out.println( queues.get(0));
         for(int i = 1; i < intensity.getIntervals().size()+1; i++){ //здесь можно выводить 1 число а не массив очередей
             PoissonDistriburion pd = new PoissonDistriburion(getLambda(),intensity.getIntervals().get(i-1).getLength());
             queues.add(Math.max(0,queues.get(i-1)+ pd.returnNum(pd.u, pd.intervals) - (int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1))));
+            realDoneApps.add(Math.min(queues.get(i-1)+ pd.returnNum(pd.u, pd.intervals),(int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1))));
+            maxDoneApps.add((int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1)));
             System.out.println(queues.get(i-1)+"+"+ pd.returnNum(pd.u, pd.intervals) +"-"+ (int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1)));
         }
         this.queue = queues.get(queues.size()-1);
+        this.realDoneApps = 0;
+        for(int elem : realDoneApps){
+            this.realDoneApps+=elem;
+        }
+        this.maxDoneApps = 0;
+        for(int elem : maxDoneApps){
+            this.maxDoneApps+=elem;
+        }
+        System.out.println("Обслужилось " + this.realDoneApps + " заявок");
+        System.out.println("Могло быть обслужено " + this.maxDoneApps +" заявок");
         //return queues.get(queues.size()-1);
     }
     public void createQueueWithoutService(){
@@ -115,14 +153,6 @@ public class Thread {
     public static void main(String[] args) {
         Formula formula = new Formula("x^2");
         Thread thread = new Thread(1,2, 1, 10, formula, 10, 9);
-//        Intensity intensity = new Intensity(thread.getNumOfPoints(), thread.getGreenTime(), thread.getFormula());
-//        ArrayList<Integer> queues = new ArrayList<>();
-//        queues.add(thread.getQueue());
-//            for(int i = 1; i < intensity.getIntervals().size(); i++){
-//                PoissonDistriburion pd = new PoissonDistriburion(thread.getLambda(),intensity.getIntervals().get(i-1).getLength());
-//                queues.add(Math.max(0,queues.get(i-1)+ pd.returnNum(pd.u, pd.intervals) - (int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1))));
-//                System.out.println(queues.get(i-1)+"+"+ pd.returnNum(pd.u, pd.intervals) +"-"+ (int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1)));
-//        }
         thread.createQueue();
         //System.out.println("QUEUES: " + thread.getQueues());
         System.out.println("FINAL: "+ thread.queue);

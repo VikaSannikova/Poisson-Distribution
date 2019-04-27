@@ -1,12 +1,14 @@
 package approximation.gui;
 
 import approximation.DoneClasses.Formula;
+import approximation.DoneClasses.Loop;
 import approximation.DoneClasses.Thread;
 
 import javax.imageio.plugins.jpeg.JPEGHuffmanTable;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class Swing extends JFrame{
     public Swing(){
@@ -155,7 +157,9 @@ public class Swing extends JFrame{
         loop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Loop loop = new Loop((ArrayList<Thread>) tableModel.getThreads(), Double.parseDouble(loopTimeTF.getText()));
+                loop.start(Integer.parseInt(iterNumTF.getText()));
+                loop.check();
             }
         });
 
