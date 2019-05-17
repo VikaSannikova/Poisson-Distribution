@@ -3,8 +3,15 @@ package approximation.gui;
 import approximation.DoneClasses.Formula;
 import approximation.DoneClasses.Loop;
 import approximation.DoneClasses.Thread;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
-import javax.imageio.plugins.jpeg.JPEGHuffmanTable;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -79,11 +86,12 @@ public class Swing extends JFrame{
             }
         });
 
-        JPanel grid= new JPanel(new GridLayout(4,1,0,5));
+        JPanel grid= new JPanel(new GridLayout(5,1,0,5));
         JButton add = new JButton("Добавить");
         JButton delete = new JButton("Удалить");
         JButton start = new JButton("Старт");
         JButton loop = new JButton("Цикл");
+        JButton draw = new JButton("Отрисовать графики");
 
 
         add.addActionListener(new ActionListener() {
@@ -146,20 +154,80 @@ public class Swing extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String str = "";
-                tableModel.getTread(rowNumber[0]).createQueue();
-                int q = tableModel.getTread(rowNumber[0]).getQueue();
-                double avg = tableModel.getTread(rowNumber[0]).getAvgIntens();
+                tableModel.getThread(rowNumber[0]).createQueue();
+                int q = tableModel.getThread(rowNumber[0]).getQueue();
+                double avg = tableModel.getThread(rowNumber[0]).getAvgIntens();
                 str = Integer.toString(q) +" "+ Double.toString(avg);
                 text.setText(str);
             }
         });
 
+        final Loop[] loopGeneral = new Loop[1];
+
         loop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Loop loop = new Loop((ArrayList<Thread>) tableModel.getThreads(), Double.parseDouble(loopTimeTF.getText()));
-                loop.start(Integer.parseInt(iterNumTF.getText()));
-                loop.check();
+                loopGeneral[0] = new Loop((ArrayList<Thread>) tableModel.getThreads(), Double.parseDouble(loopTimeTF.getText()));
+                try {
+                    loopGeneral[0].start(Integer.parseInt(iterNumTF.getText()));
+                } catch (CloneNotSupportedException e1) {
+                    e1.printStackTrace();
+                }
+                String str = "";
+                int iter = loopGeneral[0].getIter();
+                int yellowIter = loopGeneral[0].getYellowIter();
+                ArrayList<Double> avgQueues = loopGeneral[0].getAvgQueues();
+                str = "Стационарность достигнута: " + Integer.toString(iter)+ " " +
+                      "Число заходов в петлю: " + Integer.toString(yellowIter)+ " " +
+                      "Очереди:" + avgQueues + " ";
+                text.setText(str);
+                loopGeneral[0].check();
+            }
+        });
+        final XYSeriesCollection dataset = new XYSeriesCollection();
+        draw.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                XYSeries []xySeries = new XYSeries[2+tableModel.getRowCount()];
+                xySeries[0] = new XYSeries("Нулевая");
+                xySeries[1] = new XYSeries("Наибольшая");
+                for(int i = 2; i < xySeries.length; i++){
+                    String str = (i-1) + " очередь";
+                    xySeries[i] = new XYSeries(str);
+                }
+                for(int i = 0; i < Integer.parseInt(iterNumTF.getText()); i++){
+                    xySeries[0].add(i,loopGeneral[0].getSintZero().get(i));
+                    xySeries[1].add(i,loopGeneral[0].getSintInf().get(i));
+                    for(int j = 2; j < xySeries.length; j++){
+                        xySeries[j].add(i, loopGeneral[0].getThreadsQ().get(j-2).get(i));
+                    }
+                }
+                dataset.addSeries(xySeries[0]);
+                dataset.addSeries(xySeries[1]);
+                for(int j = 2; j < xySeries.length; j++){
+                    dataset.addSeries(xySeries[j]);
+                }
+                JFreeChart chart = ChartFactory.createXYLineChart(
+                        "",
+                        "x",
+                        "y",
+                        dataset,
+                        PlotOrientation.VERTICAL,
+                        true,
+                        true,
+                        true);
+                chart.setBackgroundPaint(Color.WHITE);
+                XYPlot plot = chart.getXYPlot();
+                XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+
+                plot.setRenderer(0,renderer);
+                JDialog dialog = new JDialog();
+                dialog.setTitle("Новый поток");
+                dialog.setModal(true);
+                dialog.setSize(500, 400);
+                dialog.add(new ChartPanel(chart));
+                dialog.setVisible(true);
+                dataset.removeAllSeries();
             }
         });
 
@@ -167,6 +235,7 @@ public class Swing extends JFrame{
         grid.add(delete);
         grid.add(start);
         grid.add(loop);
+        grid.add(draw);
         JPanel flow = new JPanel(new FlowLayout(FlowLayout.CENTER));
         flow.add(grid);
         add(flow, BorderLayout.EAST);

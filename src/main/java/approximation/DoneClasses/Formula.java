@@ -1,6 +1,9 @@
 package approximation.DoneClasses;
 import javax.script.*;
 import net.objecthunter.exp4j.*;
+
+import java.util.ArrayList;
+
 public class Formula {
         String str;
         Expression expression;
@@ -26,6 +29,16 @@ public class Formula {
                 //formula.expression = new ExpressionBuilder("x^2/0").variables("x").build();
                 double x = 2;
                 System.out.println("f(x)="+formula.f(x));
+//                ArrayList<Integer> a = new ArrayList<>();
+//                a.add(0);
+//                a.add(1);
+//                ArrayList<Integer> b = new ArrayList<Integer>(a);
+//                System.out.println(b);
+//                b.set(0,2);
+//                b.set(1,3);
+//                b.add(4);
+//                System.out.println(a);
+//                System.out.println(b);
         }
 
         @Override

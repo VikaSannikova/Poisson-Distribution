@@ -2,7 +2,7 @@ package approximation.DoneClasses;
 
 import java.util.ArrayList;
 
-public class Thread {
+public class Thread implements Cloneable {
     int id;
     int queue;
     //ArrayList<Integer> queues = new ArrayList<>();
@@ -25,6 +25,11 @@ public class Thread {
         this.formula = formula;
         this.yellowTime = yellowTime;
         this.numOfPoints = numOfPoints;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     public int getId() {
@@ -97,6 +102,10 @@ public class Thread {
 
     public void setRealDoneApps(int realDoneApps) {
         this.realDoneApps = realDoneApps;
+    }
+
+    public void setZeroQueue(){
+        setQueue(0);
     }
 
     public Integer getMaxDoneApps(){

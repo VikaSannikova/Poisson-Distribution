@@ -92,7 +92,7 @@ public class SetOfThreads extends AbstractTableModel {
         this.threads = threads;
     }
 
-    public Thread getTread(int row){
+    public Thread getThread(int row){
         return threads.get(row);
     }
 }

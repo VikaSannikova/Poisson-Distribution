@@ -51,14 +51,10 @@ public class GUI extends JFrame{
         Box contents = new Box(BoxLayout.Y_AXIS);
         contents.add(new JScrollPane(table));
         getContentPane().add(contents);
-//        JPanel panel = new JPanel(new );
-//        panel.add(table);
-//        getContentPane().add(panel);
 
     }
 
     public static void main(String[] args) {
-        //JFrame.setDefaultLookAndFeelDecorated(true);
         new GUI();
     }
 }
