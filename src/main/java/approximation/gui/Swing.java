@@ -128,13 +128,26 @@ public class Swing extends JFrame{
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         //проверка на ошибку ввода
-                        tableModel.addThread(new Thread(Integer.valueOf(idTF.getText()),
-                                Integer.valueOf(queueTF.getText()),
-                                Double.valueOf(lambdaTF.getText()),
-                                Double.valueOf(greenTimeTF.getText()),
-                                new Formula(formulaTF.getText()),
-                                Double.valueOf(yellowTimeTF.getText()),
-                                9));
+                        if(tableModel.getRowCount() > 0){
+                            tableModel.addThread(new Thread(Integer.valueOf(idTF.getText()),
+                                    Integer.valueOf(queueTF.getText()),
+                                    Double.valueOf(lambdaTF.getText()),
+                                    Double.valueOf(greenTimeTF.getText()),
+                                    new Formula(formulaTF.getText()),
+                                    Double.valueOf(yellowTimeTF.getText()),
+                                    9));
+                        }
+                        if(tableModel.getRowCount() == 0)
+                        {
+                            tableModel.addThread(new Thread(Integer.valueOf(idTF.getText()),
+                                    Integer.valueOf(queueTF.getText()),
+                                    Double.valueOf(lambdaTF.getText()),
+                                    Double.valueOf(greenTimeTF.getText()),
+                                    new Formula(formulaTF.getText()),
+                                    Double.valueOf(yellowTimeTF.getText()),
+                                    0));
+                        }
+
                         dialog.dispose();
                     }
                 });
