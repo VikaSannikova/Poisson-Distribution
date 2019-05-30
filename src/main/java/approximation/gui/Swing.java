@@ -4,11 +4,16 @@ import approximation.DoneClasses.Formula;
 import approximation.DoneClasses.Loop;
 import approximation.DoneClasses.Thread;
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.category.CategoryItemRenderer;
+import org.jfree.chart.renderer.category.CategoryStepRenderer;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
@@ -86,12 +91,14 @@ public class Swing extends JFrame{
             }
         });
 
-        JPanel grid= new JPanel(new GridLayout(5,1,0,5));
+        JPanel grid= new JPanel(new GridLayout(7,1,0,5));
         JButton add = new JButton("Добавить");
         JButton delete = new JButton("Удалить");
         JButton start = new JButton("Старт");
         JButton loop = new JButton("Цикл");
         JButton draw = new JButton("Отрисовать графики");
+        JButton drawstats = new JButton("Отрисотвать статистики");
+        JButton drawdeltastats = new JButton("Отрисовать дельта статистики");
 
 
         add.addActionListener(new ActionListener() {
@@ -197,6 +204,7 @@ public class Swing extends JFrame{
                 loopGeneral[0].check();
             }
         });
+
         final XYSeriesCollection dataset = new XYSeriesCollection();
         draw.addActionListener(new ActionListener() {
             @Override
@@ -244,11 +252,95 @@ public class Swing extends JFrame{
             }
         });
 
+        drawstats.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+                for(int k = 0; k < tableModel.getRowCount(); k++){
+                    for(int i = 0; i < loopGeneral[0].getStats().get(k).size();i++) {
+                        String number = String.valueOf(k);
+                        String str = String.valueOf(i);
+                        dataset.setValue(loopGeneral[0].getStats().get(k).get(i), number, str);
+                    }
+                }
+                JFreeChart chart = ChartFactory.createBarChart(
+                        "Статистика частот",
+                        "Число обслуженных заявок",
+                        "Частота",
+                        dataset,
+                        PlotOrientation.VERTICAL,
+                        true,
+                        true,
+                        false
+                );
+
+                CategoryPlot plot = chart.getCategoryPlot();
+                plot.setRangeGridlinePaint(Color.BLACK);
+                plot.setBackgroundPaint(Color.white);
+                CategoryItemRenderer renderer = new CategoryStepRenderer();
+                //renderer.setBaseStroke(new BasicStroke(10.0f));
+                plot.setRenderer( renderer);
+                ChartFrame frame = new ChartFrame("Статистики за зеленые света", chart);
+                frame.setVisible(true);
+                frame.setSize(1000,200);
+//                for(int k = 0; k < tableModel.getRowCount(); k++){
+//                    for(int i = 0; i < loopGeneral[0].getStats().get(k).size();i++) {
+//                        String number = String.valueOf(k);
+//                        String str = String.valueOf(i);
+//                        dataset.removeValue(number, str);
+//                    }
+//                }
+            }
+        });
+
+        drawdeltastats.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+                for(int k = 0; k < tableModel.getRowCount(); k++){
+                    for(int i = 0; i < loopGeneral[0].getAllDeltaThreadStat().get(k).size(); i++){
+                        String number = String.valueOf(k);
+                        String str = String.valueOf(i);
+                        dataset.setValue(loopGeneral[0].getAllDeltaThreadStat().get(k).get(i), number, str);
+                    }
+                }
+                JFreeChart chart = ChartFactory.createBarChart(
+                        "Статистика частот по дельтам",
+                        "Число обслуженных заявок",
+                        "Частота",
+                        dataset,
+                        PlotOrientation.VERTICAL,
+                        true,
+                        true,
+                        false
+                );
+
+                CategoryPlot plot = chart.getCategoryPlot();
+                plot.setRangeGridlinePaint(Color.BLACK);
+                plot.setBackgroundPaint(Color.white);
+                CategoryItemRenderer renderer = new CategoryStepRenderer();
+                //renderer.setBaseStroke(new BasicStroke(10.0f));
+                plot.setRenderer( renderer);
+                ChartFrame frame = new ChartFrame("Статистики за зеленые света", chart);
+                frame.setVisible(true);
+                frame.setSize(1000,200);
+//                for(int k = 0; k < tableModel.getRowCount(); k++){
+//                    for(int i = 0; i < loopGeneral[0].getAllDeltaThreadStat().get(k).size(); i++){
+//                        String number = String.valueOf(k);
+//                        String str = String.valueOf(i);
+//                        dataset.removeValue(number, str);
+//                    }
+//                }
+            }
+        });
+
         grid.add(add);
         grid.add(delete);
         grid.add(start);
         grid.add(loop);
         grid.add(draw);
+        grid.add(drawstats);
+        grid.add(drawdeltastats);
         JPanel flow = new JPanel(new FlowLayout(FlowLayout.CENTER));
         flow.add(grid);
         add(flow, BorderLayout.EAST);

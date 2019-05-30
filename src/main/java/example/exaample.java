@@ -18,7 +18,7 @@ import org.jfree.ui.RectangleInsets;
 import org.jfree.ui.RefineryUtilities;
 
 /**
- * A demo showing a line chart drawn using spline curves.
+ * A demo showing a line BarChartVertical drawn using spline curves.
  */
 class XYSplineRendererDemo1a extends ApplicationFrame {
 
@@ -54,7 +54,7 @@ class XYSplineRendererDemo1a extends ApplicationFrame {
         plot.setRangeGridlinePaint(Color.white);
         plot.setAxisOffset(new RectangleInsets(4, 4, 4, 4));
 
-        // create and return the chart panel...
+        // create and return the BarChartVertical panel...
         JFreeChart chart = new JFreeChart("XYSplineRenderer",
                 JFreeChart.DEFAULT_TITLE_FONT, plot, true);
         ChartUtilities.applyCurrentTheme(chart);

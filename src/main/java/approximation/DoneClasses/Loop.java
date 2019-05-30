@@ -15,6 +15,7 @@ public class Loop {
     int yellowIter; //число заходов в желтый свет
     ArrayList<ArrayList<Double>>stats = new ArrayList<>();
     ArrayList<ArrayList<Double>>deltaStats = new ArrayList<>();
+    ArrayList<ArrayList<Double>>allDeltaThreadStat = new ArrayList<>();
     ArrayList<Double> sintZero = new ArrayList<>();
     ArrayList<Double> sintInf = new ArrayList<>();
     ArrayList<ArrayList<Double>> threadsQ = new ArrayList<>(); //для динамики средних очередей по итерациям
@@ -92,6 +93,26 @@ public class Loop {
 
     public void setSintInf(ArrayList<Double> sintInf) {
         this.sintInf = sintInf;
+    }
+
+    public void setStats(ArrayList<ArrayList<Double>> stats) {
+        this.stats = stats;
+    }
+
+    public ArrayList<ArrayList<Double>> getDeltaStats() {
+        return deltaStats;
+    }
+
+    public void setDeltaStats(ArrayList<ArrayList<Double>> deltaStats) {
+        this.deltaStats = deltaStats;
+    }
+
+    public ArrayList<ArrayList<Double>> getAllDeltaThreadStat() {
+        return allDeltaThreadStat;
+    }
+
+    public void setAllDeltaThreadStat(ArrayList<ArrayList<Double>> allDeltaThreadStat) {
+        this.allDeltaThreadStat = allDeltaThreadStat;
     }
 
     public void start(int numOfIterations) throws CloneNotSupportedException {
@@ -343,6 +364,21 @@ public class Loop {
         System.out.println("Ряды по каждому дальта: ");
         for(ArrayList<Double> elem: deltaStats){
             System.out.println(elem);
+        }
+        System.out.println("Вывод всех штук: ");
+        for(int i = 0; i< numOfThreads; i++){
+            ArrayList<Double> tmp = new ArrayList<>();
+            if(i == 0){
+                tmp.addAll(deltaStats.get(0));
+            }
+            if(i >0){
+                tmp = new ArrayList<>();
+                for(int j = i*10-9; j < (i+1)*10-9; j++){
+                    tmp.addAll(deltaStats.get(j));
+                }
+            }
+
+            allDeltaThreadStat.add(tmp);
         }
 
     }
