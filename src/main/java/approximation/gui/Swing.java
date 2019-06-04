@@ -41,8 +41,16 @@ public class Swing extends JFrame{
         JTextField iterNumTF = new JTextField();
         loopPanel.add(iterNumTF);
         dataPanel.add(loopPanel);
-        JLabel text = new JLabel("Выходные данные");
-        dataPanel.add(text);
+        JPanel resPanel = new JPanel(new GridLayout(4,1,0,5));
+            JLabel text = new JLabel("Выходные данные");
+            resPanel.add(text);
+            JLabel stat = new JLabel();
+            resPanel.add(stat);
+            JLabel petlya = new JLabel();
+            resPanel.add(petlya);
+            JLabel ochered = new JLabel();
+            resPanel.add(ochered);
+        dataPanel.add(resPanel);
 
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -91,14 +99,14 @@ public class Swing extends JFrame{
             }
         });
 
-        JPanel grid= new JPanel(new GridLayout(7,1,0,5));
+        JPanel grid= new JPanel(new GridLayout(6,1,0,5));
         JButton add = new JButton("Добавить");
         JButton delete = new JButton("Удалить");
         JButton start = new JButton("Старт");
-        JButton loop = new JButton("Цикл");
-        JButton draw = new JButton("Отрисовать графики");
-        JButton drawstats = new JButton("Отрисотвать статистики");
-        JButton drawdeltastats = new JButton("Отрисовать дельта статистики");
+        //JButton loop = new JButton("Цикл");
+        JButton draw = new JButton("Отрисовать графики стационарности");
+        JButton drawstats = new JButton("Статистический ряд");
+        JButton drawdeltastats = new JButton("Склейка статистических рядов");
 
 
         add.addActionListener(new ActionListener() {
@@ -170,21 +178,21 @@ public class Swing extends JFrame{
             }
         });
 
-        start.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String str = "";
-                tableModel.getThread(rowNumber[0]).createQueue();
-                int q = tableModel.getThread(rowNumber[0]).getQueue();
-                double avg = tableModel.getThread(rowNumber[0]).getAvgIntens();
-                str = Integer.toString(q) +" "+ Double.toString(avg);
-                text.setText(str);
-            }
-        });
+//        start.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                String str = "";
+//                tableModel.getThread(rowNumber[0]).createQueue();
+//                int q = tableModel.getThread(rowNumber[0]).getQueue();
+//                double avg = tableModel.getThread(rowNumber[0]).getAvgIntens();
+//                str = Integer.toString(q) +" "+ Double.toString(avg);
+//                text.setText(str);
+//            }
+//        });
 
         final Loop[] loopGeneral = new Loop[1];
 
-        loop.addActionListener(new ActionListener() {
+        start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 loopGeneral[0] = new Loop((ArrayList<Thread>) tableModel.getThreads(), Double.parseDouble(loopTimeTF.getText()));
@@ -197,10 +205,12 @@ public class Swing extends JFrame{
                 int iter = loopGeneral[0].getIter();
                 int yellowIter = loopGeneral[0].getYellowIter();
                 ArrayList<Double> avgQueues = loopGeneral[0].getAvgQueues();
-                str = "Стационарность достигнута: " + Integer.toString(iter)+ " " +
-                      "Число заходов в петлю: " + Integer.toString(yellowIter)+ " " +
-                      "Очереди:" + avgQueues + " ";
-                text.setText(str);
+                str = "Стационарность достигнута: " + Integer.toString(iter);
+                stat.setText(str);
+                str = "Число заходов в петлю: " + Integer.toString(yellowIter);
+                petlya.setText(str);
+                str = "Очереди: " + avgQueues;
+                ochered.setText(str);
                 loopGeneral[0].check();
             }
         });
@@ -243,7 +253,7 @@ public class Swing extends JFrame{
 
                 plot.setRenderer(0,renderer);
                 JDialog dialog = new JDialog();
-                dialog.setTitle("Новый поток");
+                dialog.setTitle("Визуализация достижения стационарности");
                 dialog.setModal(true);
                 dialog.setSize(500, 400);
                 dialog.add(new ChartPanel(chart));
@@ -264,32 +274,22 @@ public class Swing extends JFrame{
                     }
                 }
                 JFreeChart chart = ChartFactory.createBarChart(
-                        "Статистика частот",
+                        "",
                         "Число обслуженных заявок",
                         "Частота",
                         dataset,
                         PlotOrientation.VERTICAL,
                         true,
                         true,
-                        false
+                        true
                 );
 
                 CategoryPlot plot = chart.getCategoryPlot();
                 plot.setRangeGridlinePaint(Color.BLACK);
-                plot.setBackgroundPaint(Color.white);
-                CategoryItemRenderer renderer = new CategoryStepRenderer();
-                //renderer.setBaseStroke(new BasicStroke(10.0f));
-                plot.setRenderer( renderer);
-                ChartFrame frame = new ChartFrame("Статистики за зеленые света", chart);
+                plot.setBackgroundPaint(Color.lightGray);
+                ChartFrame frame = new ChartFrame("Статистический ряд за целый зеленый свет", chart);
                 frame.setVisible(true);
                 frame.setSize(1000,200);
-//                for(int k = 0; k < tableModel.getRowCount(); k++){
-//                    for(int i = 0; i < loopGeneral[0].getStats().get(k).size();i++) {
-//                        String number = String.valueOf(k);
-//                        String str = String.valueOf(i);
-//                        dataset.removeValue(number, str);
-//                    }
-//                }
             }
         });
 
@@ -305,39 +305,28 @@ public class Swing extends JFrame{
                     }
                 }
                 JFreeChart chart = ChartFactory.createBarChart(
-                        "Статистика частот по дельтам",
+                        "Склейка статистических рядов за дельты",
                         "Число обслуженных заявок",
                         "Частота",
                         dataset,
                         PlotOrientation.VERTICAL,
                         true,
                         true,
-                        false
+                        true
                 );
 
                 CategoryPlot plot = chart.getCategoryPlot();
                 plot.setRangeGridlinePaint(Color.BLACK);
-                plot.setBackgroundPaint(Color.white);
-                CategoryItemRenderer renderer = new CategoryStepRenderer();
-                //renderer.setBaseStroke(new BasicStroke(10.0f));
-                plot.setRenderer( renderer);
-                ChartFrame frame = new ChartFrame("Статистики за зеленые света", chart);
+                plot.setBackgroundPaint(Color.lightGray);
+                ChartFrame frame = new ChartFrame("Склейка статистических рядов за дельты", chart);
                 frame.setVisible(true);
                 frame.setSize(1000,200);
-//                for(int k = 0; k < tableModel.getRowCount(); k++){
-//                    for(int i = 0; i < loopGeneral[0].getAllDeltaThreadStat().get(k).size(); i++){
-//                        String number = String.valueOf(k);
-//                        String str = String.valueOf(i);
-//                        dataset.removeValue(number, str);
-//                    }
-//                }
             }
         });
 
         grid.add(add);
         grid.add(delete);
         grid.add(start);
-        grid.add(loop);
         grid.add(draw);
         grid.add(drawstats);
         grid.add(drawdeltastats);
