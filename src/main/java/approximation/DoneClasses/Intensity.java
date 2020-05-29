@@ -14,17 +14,23 @@ public class Intensity {
     ArrayList<Double> intensities = new ArrayList<>(); //интенсивности на каждом из интервалов
     double average;
     Formula formula;
+    double T;
 
     public Intensity(int numOfPoints, double T, Formula formula){
         this.length = numOfPoints+1;
         this.formula = formula;
         double delta = T/length;
+        this.T = T;
         for(int i = 0; i < length; i++){
             deltatimes.add(delta);
         }
         createIntervals();
         createIntensity();
         createAverage();
+    }
+
+    public double getT() {
+        return T;
     }
 
     void createIntervals(){

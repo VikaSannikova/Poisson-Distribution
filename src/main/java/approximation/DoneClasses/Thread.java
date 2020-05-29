@@ -18,6 +18,7 @@ public class Thread implements Cloneable {
     int realDoneApps;
     int maxDoneApps;
     int[] realDoneAppsStats;
+    double timeForOne;
 
     public Thread(int id, int queue, double lambda, double greenTime, Formula formula, double yellowTime, int numOfPoints) {
         this.id = id;
@@ -152,6 +153,11 @@ public class Thread implements Cloneable {
         this.realDoneAppsStats = realDoneAppsStats;
     }
 
+    public  void setTimeForOne(double timeForOne){
+        this.timeForOne = timeForOne;
+    }
+
+
     public void createQueue(){
         Intensity intensity = new Intensity(getNumOfPoints(), getGreenTime(), getFormula());
         avgIntens = intensity.getAverage();
@@ -163,13 +169,14 @@ public class Thread implements Cloneable {
         System.out.println( queues.get(0));
         for(int i = 1; i < intensity.getIntervals().size()+1; i++){ //здесь можно выводить 1 число а не массив очередей
             PoissonDistriburion pd = new PoissonDistriburion(getLambda(),intensity.getIntervals().get(i-1).getLength());
-            queues.add(Math.max(0,queues.get(i-1)+ pd.returnNum(pd.u, pd.intervals) - (int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1))));
-            realDoneApps.add(Math.min(queues.get(i-1)+ pd.returnNum(pd.u, pd.intervals),(int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1))));
+            int maxnum = (int) (intensity.getIntervals().get(i-1).getLength()/timeForOne); //сколько может обслужиться по максимуму с явным вр обсл
+            queues.add(Math.max(0,queues.get(i-1)+ pd.returnNum(pd.u, pd.intervals) - Math.min((int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1)), maxnum)));
+            realDoneApps.add(Math.min(queues.get(i-1)+ pd.returnNum(pd.u, pd.intervals),Math.min((int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1)), maxnum)));
             realDoneAppsStats[i-1] = 0;
             realDoneAppsStats[i-1] = realDoneApps.get(i-1); //+=
 
-            maxDoneApps.add((int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1)));
-            System.out.println(queues.get(i-1)+"+"+ pd.returnNum(pd.u, pd.intervals) +"-"+ (int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1)));
+            maxDoneApps.add(Math.min((int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1)), maxnum));
+            System.out.println(queues.get(i-1)+"+"+ pd.returnNum(pd.u, pd.intervals) +"-"+ Math.min((int)(intensity.getIntervals().get(i-1).getLength()*intensity.getIntensities().get(i-1)), maxnum));
         }
         this.queue = queues.get(queues.size()-1);
         this.realDoneApps = 0;
@@ -203,9 +210,9 @@ public class Thread implements Cloneable {
         //System.out.println("QUEUES: " + thread.getQueues());
         System.out.println("FINAL: "+ thread.queue);
         System.out.println("AVG INTENSITY: "+ thread.avgIntens);
-//        Thread thread1 = new Thread(2,2,1,10,new Formula("x"),10,9);
-//        thread1.createQueue();System.out.println("FINAL: "+ thread1.queue);
-//        System.out.println("AVG INTENSITY: "+ thread1.avgIntens);
+        Thread thread1 = new Thread(2,2,1,10,new Formula("x"),10,9);
+        thread1.createQueue();System.out.println("FINAL: "+ thread1.queue);
+        System.out.println("AVG INTENSITY: "+ thread1.avgIntens);
         System.out.println("Реально обслуженные заявки по дельтам: " + Arrays.toString(thread.realDoneAppsStats));
         System.out.println("В сумме " + thread.realDoneApps);
 

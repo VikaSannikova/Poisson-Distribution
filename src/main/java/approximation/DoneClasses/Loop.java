@@ -22,8 +22,11 @@ public class Loop {
 
 
 
-    public Loop(ArrayList<Thread> threads, Double yellowTime) {
+    public Loop(ArrayList<Thread> threads, Double yellowTime, double timeForOne) {
         this.threads = threads;
+        for (Thread thread: this.threads){
+            thread.setTimeForOne(timeForOne);
+        }
         this.yellowTime = yellowTime;
         this.param = 0.0;
         for(int i = 0; i < threads.size(); i++){
@@ -410,7 +413,8 @@ public class Loop {
         list.add(new Thread(1, 1, 0.01,10.0 ,new Formula("3"), 5, 0));
         list.add(new Thread(1, 75, 1.0,10.0 ,new Formula("x^2"), 5, 9));
         list.add(new Thread(1, 75, 1.0,10.0 ,new Formula("x^2"), 5, 9));
-        Loop loop = new Loop((ArrayList<Thread>) list,  10.0);
+        double tfo = 0.1;
+        Loop loop = new Loop((ArrayList<Thread>) list,  10.0, tfo);
         loop.start(3);
         loop.check();
         System.out.println("Частоты для дельт");

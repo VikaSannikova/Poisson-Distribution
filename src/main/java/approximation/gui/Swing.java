@@ -33,13 +33,16 @@ public class Swing extends JFrame{
         JScrollPane jScrollPane = new JScrollPane(table);
 
         JPanel dataPanel = new JPanel(new GridLayout(1,2,0,5));
-        JPanel loopPanel = new JPanel(new GridLayout(2,2,0,5));
+        JPanel loopPanel = new JPanel(new GridLayout(3,2,0,5));
         loopPanel.add(new JLabel("Время петли"));
         JTextField loopTimeTF = new JTextField();
         loopPanel.add(loopTimeTF);
         loopPanel.add(new JLabel("Число итераций"));
         JTextField iterNumTF = new JTextField();
         loopPanel.add(iterNumTF);
+        loopPanel.add(new JLabel("Время обслуживания одной заявки"));
+        JTextField timeTF = new JTextField();
+        loopPanel.add(timeTF);
         dataPanel.add(loopPanel);
         JPanel resPanel = new JPanel(new GridLayout(4,1,0,5));
             JLabel text = new JLabel("Выходные данные");
@@ -195,7 +198,7 @@ public class Swing extends JFrame{
         start.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loopGeneral[0] = new Loop((ArrayList<Thread>) tableModel.getThreads(), Double.parseDouble(loopTimeTF.getText()));
+                loopGeneral[0] = new Loop((ArrayList<Thread>) tableModel.getThreads(), Double.parseDouble(loopTimeTF.getText()), Double.parseDouble(timeTF.getText()));
                 try {
                     loopGeneral[0].start(Integer.parseInt(iterNumTF.getText()));
                 } catch (CloneNotSupportedException e1) {
@@ -284,7 +287,7 @@ public class Swing extends JFrame{
                         true
                 );
 
-                CategoryPlot plot = chart.getCategoryPlot();
+                org.jfree.chart.plot.CategoryPlot plot = chart.getCategoryPlot();
                 plot.setRangeGridlinePaint(Color.BLACK);
                 plot.setBackgroundPaint(Color.lightGray);
                 ChartFrame frame = new ChartFrame("Статистический ряд за целый зеленый свет", chart);
